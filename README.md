@@ -1,24 +1,16 @@
 # Capas Studio 3D
 
-Сайт-каталог портсигарів. Одна сторінка `index.html`, без збірки.
+Сайт-каталог портсигарів, напрям «Шари»: GSAP (ScrollTrigger, ScrollSmoother, SplitText, Flip, Draggable).
 
-**Що де міняти:**
-- **Номер WhatsApp і Instagram** — в об'єкті `CONFIG` угорі `<script>`.
-- **Моделі, ціни, опис** — у масиві `MODELS`.
-- **Фото** — у теці `img/`. Зараз там 3D-рендери, справжні фото кладіть з тими ж іменами файлів.
+| Файл | Що в ньому |
+|---|---|
+| `index.html` | Розмітка. Тексти підставляються з `data-i="ключ"`. |
+| `js/data.js` | `CONFIG` (WhatsApp, Instagram), `UI` (тексти 4 мовами), `MODELS` (товари; `id` = тека з фото). |
+| `js/app.js` | Мова, картки, анімації, сторінка товару, звук. |
+| `js/filament.js` | Декоративний фон першого екрана (canvas). |
+| `css/main.css` | Стилі. |
+| `photos/<id>/` | **Сюди класти фото** (див. `photos/ЯК ДОДАТИ ФОТО.txt`). |
+| `tools/build_photos.py` | Стискає фото в `ph/` і пише `photos.json`. |
+| `оновити сайт.bat` | Фото, збірка `dist/` і `wrangler deploy` на Cloudflare. |
 
-Публікується через GitHub Pages з гілки `main`, з кореня репозиторію.
-
-## Cloudflare
-
-Основна адреса: https://capas-studio-3d.art-gulenko.workers.dev (Cloudflare Workers, статичні файли з `dist/`).
-
-Як оновити сайт після змін:
-
-```bash
-rm -rf dist && mkdir dist && cp -r index.html img fonts dist/
-```
-
-```bash
-npx wrangler@4 deploy
-```
+Адреса: https://capas-studio-3d.art-gulenko.workers.dev

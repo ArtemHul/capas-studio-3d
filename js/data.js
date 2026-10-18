@@ -1,0 +1,169 @@
+/* Дані сайту: контакти, тексти чотирма мовами, товари.
+   Фото товарів беруться з photos.json (його складає tools/build_photos.py з тек photos/<id>/). */
+
+const CONFIG = {
+  whatsapp: "34642104832", // número con código de país, solo cifras
+  instagram: ""            // nombre de usuario sin @
+};
+
+const SUPPORTED = ["es", "en", "uk", "ru"];
+
+const UI = {
+  es: {
+    title: "Capas Studio 3D · Pitilleras impresas en 3D en Alicante",
+    desc: "Pitilleras y estuches con imán, diseñados e impresos capa a capa en Alicante. Pide el tuyo por WhatsApp.",
+    soundOn: "Sonido: sí", soundOff: "Sonido: no",
+    lead: "Pitilleras y estuches con imán, diseñados e impresos capa a capa en Alicante.",
+    cta: "Pedir por WhatsApp", sticker: "Escuchar el clac",
+    belt: "IMANES · PETG · DISEÑO PROPIO · HECHO A MANO · ALICANTE · ",
+    models: "Modelos", want: "Lo quiero", soon: "Foto próximamente", alt: "Foto: ",
+    howTitle: "Cómo pedir",
+    step1: "Elige el modelo.",
+    step2: "Elige el color. Imprimo en el que quieras de los que tengo.",
+    step3: "Escríbeme por WhatsApp. Entrega en mano en Alicante; envíos, pregúntame.",
+    detailsTitle: "Detalles",
+    fPetg: "Plástico resistente a golpes y al calor.",
+    fMagT: "Imanes", fMag: "Cierres magnéticos, se abren y cierran con un clac.",
+    fHandT: "Hecho a mano", fHand: "Cada pieza se imprime y se monta a mano en Alicante.",
+    fCustT: "Personalizado", fCust: "Nombre, iniciales o un logo sencillo: +5 €.",
+    footer: "Diseño propio, hecho a mano en Alicante.",
+    adults: "Solo para mayores de 18 años.",
+    msgHero: "Hola, quiero una pitillera. ¿Qué modelos y colores tienes?",
+    msgItem: (n, p) => `Hola, quiero la ${n} (${p} €). ¿Qué colores tienes?`,
+    printing: "Imprimiendo", layer: "capa",
+    manifesto: "Diseño propio. Impreso capa a capa en PETG. Imanes y montaje a mano en Alicante.",
+    scrollHint: "Desliza", view: "Ver", close: "Cerrar", prev: "Anterior", next: "Siguiente",
+    dragHint: "Arrastra", modelsCount: "modelos"
+  },
+  en: {
+    title: "Capas Studio 3D · 3D-printed cigarette cases in Alicante",
+    desc: "Cigarette cases with magnetic closures, designed and printed layer by layer in Alicante. Order yours on WhatsApp.",
+    soundOn: "Sound: on", soundOff: "Sound: off",
+    lead: "Cigarette cases with magnetic closures, designed and printed layer by layer in Alicante.",
+    cta: "Order on WhatsApp", sticker: "Play the click",
+    belt: "MAGNETS · PETG · OWN DESIGN · HANDMADE · ALICANTE · ",
+    models: "Models", want: "I want it", soon: "Photo coming soon", alt: "Photo: ",
+    howTitle: "How to order",
+    step1: "Choose the model.",
+    step2: "Choose the colour from the ones I have in stock.",
+    step3: "Message me on WhatsApp. Hand delivery in Alicante; ask me about shipping.",
+    detailsTitle: "Details",
+    fPetg: "Plastic that stands up to knocks and heat.",
+    fMagT: "Magnets", fMag: "Magnetic closures that open and shut with a click.",
+    fHandT: "Handmade", fHand: "Every piece is printed and assembled by hand in Alicante.",
+    fCustT: "Custom", fCust: "Name, initials or a simple logo: +5 €.",
+    footer: "Own design, handmade in Alicante.",
+    adults: "Adults 18+ only.",
+    msgHero: "Hi, I'd like a cigarette case. What models and colours do you have?",
+    msgItem: (n, p) => `Hi, I'd like the ${n} (${p} €). What colours do you have?`,
+    printing: "Printing", layer: "layer",
+    manifesto: "Own design. Printed layer by layer in PETG. Magnets and assembly by hand in Alicante.",
+    scrollHint: "Scroll", view: "View", close: "Close", prev: "Previous", next: "Next",
+    dragHint: "Drag", modelsCount: "models"
+  },
+  uk: {
+    title: "Capas Studio 3D · Портсигари, надруковані на 3D-принтері в Аліканте",
+    desc: "Портсигари й футляри на магнітах, спроєктовані й надруковані шар за шаром в Аліканте. Замовляйте у WhatsApp.",
+    soundOn: "Звук: так", soundOff: "Звук: ні",
+    lead: "Портсигари й футляри на магнітах, спроєктовані й надруковані шар за шаром в Аліканте.",
+    cta: "Замовити у WhatsApp", sticker: "Послухати клац",
+    belt: "МАГНІТИ · PETG · ВЛАСНИЙ ДИЗАЙН · РУЧНА РОБОТА · АЛІКАНТЕ · ",
+    models: "Моделі", want: "Хочу", soon: "Фото скоро буде", alt: "Фото: ",
+    howTitle: "Як замовити",
+    step1: "Оберіть модель.",
+    step2: "Оберіть колір з тих, що є в наявності.",
+    step3: "Напишіть мені у WhatsApp. Передаю особисто в Аліканте; про доставку питайте.",
+    detailsTitle: "Деталі",
+    fPetg: "Пластик, який не боїться ударів і спеки.",
+    fMagT: "Магніти", fMag: "Магнітні замки, що відкриваються й закриваються з клацанням.",
+    fHandT: "Ручна робота", fHand: "Кожну річ друкую й збираю вручну в Аліканте.",
+    fCustT: "Персоналізація", fCust: "Ім'я, ініціали або простий логотип: +5 €.",
+    footer: "Власний дизайн, ручна робота в Аліканте.",
+    adults: "Лише для повнолітніх (18+).",
+    msgHero: "Привіт! Хочу портсигар. Які є моделі й кольори?",
+    msgItem: (n, p) => `Привіт! Хочу «${n}» (${p} €). Які є кольори?`,
+    printing: "Друкуємо", layer: "шар",
+    manifesto: "Власний дизайн. Друк шар за шаром з PETG. Магніти й складання вручну в Аліканте.",
+    scrollHint: "Гортайте", view: "Дивитись", close: "Закрити", prev: "Назад", next: "Далі",
+    dragHint: "Тягніть", modelsCount: "моделей"
+  },
+  ru: {
+    title: "Capas Studio 3D · Портсигары, напечатанные на 3D-принтере в Аликанте",
+    desc: "Портсигары и футляры на магнитах, спроектированные и напечатанные слой за слоем в Аликанте. Заказывайте в WhatsApp.",
+    soundOn: "Звук: да", soundOff: "Звук: нет",
+    lead: "Портсигары и футляры на магнитах, спроектированные и напечатанные слой за слоем в Аликанте.",
+    cta: "Заказать в WhatsApp", sticker: "Послушать клац",
+    belt: "МАГНИТЫ · PETG · СВОЙ ДИЗАЙН · РУЧНАЯ РАБОТА · АЛИКАНТЕ · ",
+    models: "Модели", want: "Хочу", soon: "Фото скоро будет", alt: "Фото: ",
+    howTitle: "Как заказать",
+    step1: "Выберите модель.",
+    step2: "Выберите цвет из тех, что есть в наличии.",
+    step3: "Напишите мне в WhatsApp. Передаю лично в Аликанте; о доставке спрашивайте.",
+    detailsTitle: "Детали",
+    fPetg: "Пластик, который не боится ударов и жары.",
+    fMagT: "Магниты", fMag: "Магнитные замки, которые открываются и закрываются с щелчком.",
+    fHandT: "Ручная работа", fHand: "Каждую вещь печатаю и собираю вручную в Аликанте.",
+    fCustT: "Персонализация", fCust: "Имя, инициалы или простой логотип: +5 €.",
+    footer: "Свой дизайн, ручная работа в Аликанте.",
+    adults: "Только для совершеннолетних (18+).",
+    msgHero: "Привет! Хочу портсигар. Какие есть модели и цвета?",
+    msgItem: (n, p) => `Привет! Хочу «${n}» (${p} €). Какие есть цвета?`,
+    printing: "Печатаем", layer: "слой",
+    manifesto: "Свой дизайн. Печать слой за слоем из PETG. Магниты и сборка вручную в Аликанте.",
+    scrollHint: "Листайте", view: "Смотреть", close: "Закрыть", prev: "Назад", next: "Далее",
+    dragHint: "Тяните", modelsCount: "моделей"
+  }
+};
+
+/* id — ім'я теки з фото: photos/<id>/. Поле img лишилось від першої версії (тимчасові рендери, на сайті не показуються). */
+const MODELS = [
+  { id: "plana", img: "img/plana.jpg", price: 18,
+    name: { es: "Plana carbono", en: "Flat carbon", uk: "Плаский карбон", ru: "Плоский карбон" },
+    facts: {
+      es: ["98 × 64 × 25 mm, cabe en el bolsillo", "Textura de fibra de carbono", "Hueco para papel y fila de 15 filtros"],
+      en: ["98 × 64 × 25 mm, fits in a pocket", "Carbon-fibre texture", "Slot for papers and a row of 15 filters"],
+      uk: ["98 × 64 × 25 мм, вміщується в кишеню", "Текстура карбону", "Місце для паперу і ряд на 15 фільтрів"],
+      ru: ["98 × 64 × 25 мм, помещается в карман", "Текстура карбона", "Место для бумаги и ряд на 15 фильтров"] } },
+  { id: "cerilla", img: "img/cerilla.jpg", price: 18,
+    name: { es: "Cerilla", en: "Cerilla", uk: "Cerilla", ru: "Cerilla" },
+    facts: {
+      es: ["Cajón deslizante, como una caja de cerillas", "Funda con textura de panal"],
+      en: ["Sliding drawer, like a matchbox", "Sleeve with a honeycomb texture"],
+      uk: ["Висувна шухляда, як у сірниковій коробці", "Корпус із текстурою сот"],
+      ru: ["Выдвижной ящик, как у спичечного коробка", "Корпус с текстурой сот"] } },
+  { id: "swivel", img: "", price: 20,
+    name: { es: "Swivel", en: "Swivel", uk: "Swivel", ru: "Swivel" },
+    facts: {
+      es: ["La tapa gira hacia un lado sobre un eje", "Sitio para 24 filtros"],
+      en: ["The lid swings to the side on a pivot", "Room for 24 filters"],
+      uk: ["Кришка відкривається вбік на осі", "Місце для 24 фільтрів"],
+      ru: ["Крышка открывается вбок на оси", "Место для 24 фильтров"] } },
+  { id: "redonda", img: "img/redonda.jpg", price: 22,
+    name: { es: "Redonda carbono", en: "Round carbon", uk: "Круглий карбон", ru: "Круглый карбон" },
+    facts: {
+      es: ["Ø 95 mm", "Textura de fibra de carbono", "Compartimento para filtros y papel"],
+      en: ["Ø 95 mm", "Carbon-fibre texture", "Compartment for filters and papers"],
+      uk: ["Ø 95 мм", "Текстура карбону", "Відсік для фільтрів і паперу"],
+      ru: ["Ø 95 мм", "Текстура карбона", "Отсек для фильтров и бумаги"] } },
+  { id: "monolito", img: "img/monolito.jpg", price: 22,
+    name: { es: "Monolito", en: "Monolith", uk: "Моноліт", ru: "Монолит" },
+    facts: {
+      es: ["Tapa que corre por raíles", "Cargador de filtros que sale con un botón", "Ranura para el papel"],
+      en: ["Lid that slides on rails", "Filter magazine that pops out at the push of a button", "Slot for papers"],
+      uk: ["Кришка ковзає в пазах", "Магазин фільтрів виходить натисканням кнопки", "Щілина для паперу"],
+      ru: ["Крышка скользит в пазах", "Магазин фильтров выходит нажатием кнопки", "Щель для бумаги"] } },
+  { id: "artemon", img: "img/artemon.jpg", price: 25,
+    name: { es: "Artemón", en: "Artemón", uk: "Артемон", ru: "Артемон" },
+    facts: {
+      es: ["Escamas en relieve", "Se abre en dos mitades"],
+      en: ["Raised scale pattern", "Opens in two halves"],
+      uk: ["Рельєфна луска", "Відкривається на дві половини"],
+      ru: ["Рельефная чешуя", "Открывается на две половины"] } },
+  { id: "libro", img: "img/libro.jpg", price: 29,
+    name: { es: "Libro", en: "Book", uk: "Книжка", ru: "Книжка" },
+    facts: {
+      es: ["156 × 88 × 36 mm", "Se abre como un libro", "Varios compartimentos con tapa"],
+      en: ["156 × 88 × 36 mm", "Opens like a book", "Several compartments with lids"],
+      uk: ["156 × 88 × 36 мм", "Відкривається як книжка", "Кілька відсіків із кришками"],
+      ru: ["156 × 88 × 36 мм", "Открывается как книга", "Несколько отсеков с крышками"] } }
+];

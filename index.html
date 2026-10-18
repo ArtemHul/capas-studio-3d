@@ -2,433 +2,130 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Capas Studio 3D · Pitilleras impresas en 3D en Alicante</title>
 <meta name="description" content="Pitilleras y estuches con imán, diseñados e impresos capa a capa en Alicante. Pide el tuyo por WhatsApp.">
 <meta property="og:title" content="Capas Studio 3D">
 <meta property="og:description" content="Pitilleras y estuches con imán, hechos en Alicante.">
-<meta property="og:image" content="img/libro.jpg">
-<meta name="theme-color" content="#F2DC72">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F2DC72'/%3E%3Crect x='6' y='9' width='20' height='3' fill='%23000'/%3E%3Crect x='6' y='15' width='20' height='3' fill='%23000'/%3E%3Crect x='6' y='21' width='20' height='3' fill='%23000'/%3E%3C/svg%3E">
-<style>
-@font-face{font-family:"Bebas Neue";src:url(fonts/BebasNeue.ttf) format("truetype");font-display:swap}
-@font-face{font-family:"Anonymous Pro";font-weight:700;src:url(fonts/AnonymousPro-Bold.ttf) format("truetype");font-display:swap}
-:root{--y:#F2DC72;--k:#1A1A1A;--w:#FFFDF6;--sh:rgba(26,26,26,.18);--shadow:6px 6px 0 var(--sh);--f-black:"Bebas Neue","Arial Narrow",Arial,sans-serif;--f-sans:Helvetica,Arial,sans-serif;--f-mono:"Anonymous Pro","Courier New",monospace}
-*{box-sizing:border-box;margin:0;padding:0}
-html{background:var(--y)}
-body{background:var(--y);color:var(--k);font-family:var(--f-sans);font-size:18px;line-height:1.45;overflow-x:hidden}
-img{display:block;max-width:100%}
-a{color:var(--k)}
-.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
-
-.clac{cursor:pointer;transition:transform 60ms linear,box-shadow 60ms linear;-webkit-tap-highlight-color:transparent;user-select:none}
-.clac.down{transform:translate(5px,5px);box-shadow:0 0 0 transparent !important}
-
-header{border-bottom:3px solid var(--k);background:var(--y);position:sticky;top:0;z-index:5}
-header .wrap{display:flex;justify-content:space-between;align-items:center;height:60px;gap:12px}
-.logo{font-family:var(--f-black);font-size:28px;letter-spacing:0.5px;text-decoration:none;white-space:nowrap}
-.sound{font-family:var(--f-mono);font-size:14px;font-weight:bold;background:var(--w);border:2px solid var(--k);padding:6px 10px;box-shadow:3px 3px 0 var(--sh)}
-.sound.down{transform:translate(3px,3px)}
-
-.hero{padding:40px 0 56px;position:relative}
-.hero h1{font-family:var(--f-black);font-weight:400;font-size:clamp(120px,34vw,340px);line-height:0.8;letter-spacing:0.01em;margin-left:-0.03em}
-.hero .sub{font-family:var(--f-black);font-size:clamp(30px,7vw,60px);letter-spacing:0.04em;margin-top:6px}
-.hero .lead{max-width:30ch;font-size:20px;margin-top:22px}
-.sticker{position:absolute;right:16px;top:28px;width:clamp(110px,22vw,190px);aspect-ratio:1;border-radius:50%;background:var(--k);color:var(--y);font-family:var(--f-black);font-size:clamp(30px,6vw,52px);letter-spacing:0.03em;display:flex;align-items:center;justify-content:center;transform:rotate(-12deg);border:none}
-.sticker.down{transform:rotate(-12deg) scale(0.9)}
-.cta{display:inline-block;margin-top:28px;font-family:var(--f-black);font-size:28px;letter-spacing:0.04em;text-decoration:none;background:var(--k);color:var(--y);padding:12px 24px;border:3px solid var(--k);box-shadow:6px 6px 0 rgba(255,255,255,.55)}
-.cta.down{box-shadow:0 0 0 transparent !important}
-
-.belt{background:var(--k);color:var(--y);font-family:var(--f-black);font-size:26px;letter-spacing:0.06em;white-space:nowrap;overflow:hidden}
-.belt span{display:inline-block;padding:12px 0;animation:run 22s linear infinite}
-@keyframes run{to{transform:translateX(-50%)}}
-
-section{padding:56px 0;scroll-margin-top:64px}
-h2{font-family:var(--f-black);font-weight:400;font-size:clamp(64px,14vw,130px);line-height:0.85;letter-spacing:0.01em;margin-bottom:24px}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px}
-.card{background:var(--w);border:3px solid var(--k);box-shadow:var(--shadow);display:flex;flex-direction:column}
-.card .pic{border-bottom:3px solid var(--k);aspect-ratio:4/3;background:var(--w);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.card .pic img{width:100%;height:100%;object-fit:contain}
-.card .pic .none{font-family:var(--f-mono);font-size:15px;text-align:center;padding:20px}
-.card .body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
-.card h3{font-family:var(--f-black);font-weight:400;font-size:40px;letter-spacing:0.02em;line-height:0.95}
-.card ul{list-style:none;font-size:16px}
-.card li{padding-left:16px;position:relative}
-.card li:before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;background:var(--k)}
-.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;gap:10px}
-.price{font-family:var(--f-mono);font-weight:700;font-size:30px}
-.want{font-family:var(--f-black);font-size:24px;letter-spacing:0.04em;background:var(--y);border:3px solid var(--k);padding:6px 16px;text-decoration:none;box-shadow:4px 4px 0 var(--sh)}
-.want.down{transform:translate(4px,4px)}
-
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;counter-reset:s}
-.step{background:var(--k);color:var(--w);padding:22px;box-shadow:6px 6px 0 var(--sh)}
-.step b{display:block;font-family:var(--f-black);font-weight:400;font-size:84px;line-height:1;color:var(--y)}
-.step p{font-size:19px;margin-top:8px}
-
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border:3px solid var(--k);background:var(--w);box-shadow:var(--shadow)}
-.facts div{padding:18px;border:1px solid var(--k)}
-.facts b{font-family:var(--f-black);font-weight:400;font-size:32px;letter-spacing:0.03em;display:block}
-
-footer{background:var(--k);color:var(--y);padding:40px 0 48px;margin-top:20px}
-footer .big{font-family:var(--f-black);font-size:clamp(52px,12vw,110px);line-height:0.9;letter-spacing:0.02em}
-footer p{font-family:var(--f-mono);font-size:15px;margin-top:14px;color:var(--w)}
-footer a{color:var(--y)}
-
-@media (max-width:600px){
-  .sticker{top:auto;bottom:-30px;right:12px}
-  .hero{padding-bottom:70px}
-  body{font-size:17px}
-}
-@media (prefers-reduced-motion:reduce){.belt span{animation:none}.clac{transition:none}}
-.langs{display:flex;gap:8px;margin-bottom:22px}
-.langs button{font-family:var(--f-black);font-size:22px;letter-spacing:0.05em;background:transparent;color:var(--k);border:2px solid var(--k);padding:2px 10px;cursor:pointer}
-.langs button[aria-pressed="true"]{background:var(--k);color:var(--y)}
-.langs button:focus-visible,.cta:focus-visible,.want:focus-visible,.sound:focus-visible{outline:3px solid var(--k);outline-offset:3px}
-</style>
+<meta name="theme-color" content="#141312">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141312'/%3E%3Crect x='6' y='9' width='20' height='3' fill='%23FF6A2B'/%3E%3Crect x='6' y='15' width='20' height='3' fill='%23EEE8DD'/%3E%3Crect x='6' y='21' width='20' height='3' fill='%23EEE8DD'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/BebasNeue.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/main.css">
+<script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <a class="logo" href="#">CAPAS STUDIO 3D</a>
-    <button class="sound clac" id="sound" type="button" aria-pressed="true"></button>
-  </div>
+<div class="preloader" aria-hidden="true">
+  <div class="pl-lines"></div>
+  <div class="pl-word">CAPAS</div>
+  <div class="pl-meta"><span data-i="printing"></span> · <span data-i="layer"></span> <span class="pl-count">000</span>/240</div>
+</div>
+
+<header class="hdr">
+  <a class="logo" href="#top">CAPAS<span> STUDIO 3D</span></a>
+  <nav class="langs" aria-label="Idioma / Language">
+    <button type="button" data-lang="es" aria-pressed="true" lang="es">ES</button>
+    <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+    <button type="button" data-lang="uk" aria-pressed="false" lang="uk">UK</button>
+    <button type="button" data-lang="ru" aria-pressed="false" lang="ru">RU</button>
+  </nav>
+  <button class="sound clac" id="sound" type="button" aria-pressed="true"></button>
 </header>
 
-<main>
-  <div class="wrap hero">
-    <nav class="langs" aria-label="Idioma / Language">
-      <button type="button" data-lang="es" aria-pressed="true" lang="es">ES</button>
-      <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
-      <button type="button" data-lang="uk" aria-pressed="false" lang="uk">UK</button>
-      <button type="button" data-lang="ru" aria-pressed="false" lang="ru">RU</button>
-    </nav>
-    <h1>CAPAS</h1>
-    <div class="sub">studio 3D · Alicante</div>
-    <p class="lead" data-i="lead"></p>
-    <a class="cta clac wa" data-msgkey="msgHero" data-i="cta" href="#"></a>
-    <button class="sticker clac" type="button" data-i-aria="sticker">¡CLAC!</button>
-  </div>
+<div class="cursor" aria-hidden="true"><span class="cursor-label"></span></div>
+
+<div id="smooth-wrapper">
+<div id="smooth-content">
+<main id="top">
+
+  <section class="hero">
+    <canvas class="filament" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <h1 class="hero-title" aria-label="Capas">CAPAS</h1>
+      <div class="hero-sub">studio 3D · Alicante</div>
+      <p class="hero-lead reveal-lines" data-i="lead"></p>
+      <div class="hero-actions">
+        <a class="cta clac wa" data-msgkey="msgHero" data-i="cta" href="#"></a>
+        <button class="sticker clac" type="button" data-i-aria="sticker">¡CLAC!</button>
+      </div>
+    </div>
+    <div class="scroll-hint"><span data-i="scrollHint"></span><i></i></div>
+  </section>
+
+  <section class="manifesto-sec">
+    <p class="manifesto" data-i="manifesto"></p>
+  </section>
 
   <div class="belt" aria-hidden="true"><span id="belt"></span></div>
 
-  <section id="modelos">
-    <div class="wrap">
-      <h2 data-i="models"></h2>
-      <div class="grid" id="grid"></div>
+  <section class="models" id="modelos">
+    <div class="models-head">
+      <h2 class="sec-title reveal-lines" data-i="models"></h2>
+      <div class="models-meta"><span class="models-n">07</span> <span data-i="modelsCount"></span></div>
+    </div>
+    <div class="hs">
+      <div class="track" id="grid"></div>
     </div>
   </section>
 
-  <section id="pedir">
-    <div class="wrap">
-      <h2 data-i="howTitle"></h2>
-      <div class="steps">
-        <div class="step"><b>1</b><p data-i="step1"></p></div>
-        <div class="step"><b>2</b><p data-i="step2"></p></div>
-        <div class="step"><b>3</b><p data-i="step3"></p></div>
-      </div>
+  <section class="how" id="pedir">
+    <h2 class="sec-title reveal-lines" data-i="howTitle"></h2>
+    <ol class="steps">
+      <li class="step"><b>01</b><p class="reveal-lines" data-i="step1"></p></li>
+      <li class="step"><b>02</b><p class="reveal-lines" data-i="step2"></p></li>
+      <li class="step"><b>03</b><p class="reveal-lines" data-i="step3"></p></li>
+    </ol>
+  </section>
+
+  <section class="details" id="detalles">
+    <h2 class="sec-title reveal-lines" data-i="detailsTitle"></h2>
+    <div class="facts">
+      <div class="fact"><b>PETG</b><span data-i="fPetg"></span></div>
+      <div class="fact"><b data-i="fMagT"></b><span data-i="fMag"></span></div>
+      <div class="fact"><b data-i="fHandT"></b><span data-i="fHand"></span></div>
+      <div class="fact"><b data-i="fCustT"></b><span data-i="fCust"></span></div>
     </div>
   </section>
 
-  <section id="detalles">
-    <div class="wrap">
-      <h2 data-i="detailsTitle"></h2>
-      <div class="facts">
-        <div><b>PETG</b><span data-i="fPetg"></span></div>
-        <div><b data-i="fMagT"></b><span data-i="fMag"></span></div>
-        <div><b data-i="fHandT"></b><span data-i="fHand"></span></div>
-        <div><b data-i="fCustT"></b><span data-i="fCust"></span></div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="big">CAPAS STUDIO 3D</div>
+  <footer class="ftr">
+    <a class="cta clac wa" data-msgkey="msgHero" data-i="cta" href="#"></a>
+    <div class="ftr-big" aria-label="Capas Studio 3D">CAPAS STUDIO 3D</div>
     <p><span data-i="footer"></span> <span id="ig"></span></p>
     <p data-i="adults"></p>
+  </footer>
+
+</main>
+</div>
+</div>
+
+<div class="pd" id="pd" role="dialog" aria-modal="true" aria-labelledby="pd-name" hidden>
+  <button class="pd-close clac" type="button" data-i="close"></button>
+  <div class="pd-gallery">
+    <div class="pd-viewport"><div class="pd-track"></div></div>
+    <div class="pd-nav">
+      <button class="pd-prev" type="button" data-i-aria="prev">←</button>
+      <span class="pd-count"></span>
+      <button class="pd-next" type="button" data-i-aria="next">→</button>
+      <span class="pd-drag" data-i="dragHint"></span>
+    </div>
   </div>
-</footer>
+  <div class="pd-info">
+    <span class="pd-idx"></span>
+    <h3 class="pd-name" id="pd-name"></h3>
+    <ul class="pd-facts"></ul>
+    <div class="pd-row"><span class="pd-price"></span><a class="want clac wa pd-want" href="#"></a></div>
+  </div>
+</div>
 
-<script>
-const CONFIG = {
-  whatsapp: "34642104832", // número con código de país, solo cifras
-  instagram: ""            // nombre de usuario sin @
-};
-
-const SUPPORTED = ["es", "en", "uk", "ru"];
-
-const UI = {
-  es: {
-    title: "Capas Studio 3D · Pitilleras impresas en 3D en Alicante",
-    desc: "Pitilleras y estuches con imán, diseñados e impresos capa a capa en Alicante. Pide el tuyo por WhatsApp.",
-    soundOn: "Sonido: sí", soundOff: "Sonido: no",
-    lead: "Pitilleras y estuches con imán, diseñados e impresos capa a capa en Alicante.",
-    cta: "Pedir por WhatsApp", sticker: "Escuchar el clac",
-    belt: "IMANES · PETG · DISEÑO PROPIO · HECHO A MANO · ALICANTE · ",
-    models: "Modelos", want: "Lo quiero", soon: "Foto próximamente", alt: "Render 3D: ",
-    howTitle: "Cómo pedir",
-    step1: "Elige el modelo.",
-    step2: "Elige el color. Imprimo en el que quieras de los que tengo.",
-    step3: "Escríbeme por WhatsApp. Entrega en mano en Alicante; envíos, pregúntame.",
-    detailsTitle: "Detalles",
-    fPetg: "Plástico resistente a golpes y al calor.",
-    fMagT: "Imanes", fMag: "Cierres magnéticos, se abren y cierran con un clac.",
-    fHandT: "Hecho a mano", fHand: "Cada pieza se imprime y se monta a mano en Alicante.",
-    fCustT: "Personalizado", fCust: "Nombre, iniciales o un logo sencillo: +5 €.",
-    footer: "Diseño propio, hecho a mano en Alicante.",
-    adults: "Solo para mayores de 18 años.",
-    msgHero: "Hola, quiero una pitillera. ¿Qué modelos y colores tienes?",
-    msgItem: (n, p) => `Hola, quiero la ${n} (${p} €). ¿Qué colores tienes?`
-  },
-  en: {
-    title: "Capas Studio 3D · 3D-printed cigarette cases in Alicante",
-    desc: "Cigarette cases with magnetic closures, designed and printed layer by layer in Alicante. Order yours on WhatsApp.",
-    soundOn: "Sound: on", soundOff: "Sound: off",
-    lead: "Cigarette cases with magnetic closures, designed and printed layer by layer in Alicante.",
-    cta: "Order on WhatsApp", sticker: "Play the click",
-    belt: "MAGNETS · PETG · OWN DESIGN · HANDMADE · ALICANTE · ",
-    models: "Models", want: "I want it", soon: "Photo coming soon", alt: "3D render: ",
-    howTitle: "How to order",
-    step1: "Choose the model.",
-    step2: "Choose the colour from the ones I have in stock.",
-    step3: "Message me on WhatsApp. Hand delivery in Alicante; ask me about shipping.",
-    detailsTitle: "Details",
-    fPetg: "Plastic that stands up to knocks and heat.",
-    fMagT: "Magnets", fMag: "Magnetic closures that open and shut with a click.",
-    fHandT: "Handmade", fHand: "Every piece is printed and assembled by hand in Alicante.",
-    fCustT: "Custom", fCust: "Name, initials or a simple logo: +5 €.",
-    footer: "Own design, handmade in Alicante.",
-    adults: "Adults 18+ only.",
-    msgHero: "Hi, I'd like a cigarette case. What models and colours do you have?",
-    msgItem: (n, p) => `Hi, I'd like the ${n} (${p} €). What colours do you have?`
-  },
-  uk: {
-    title: "Capas Studio 3D · Портсигари, надруковані на 3D-принтері в Аліканте",
-    desc: "Портсигари й футляри на магнітах, спроєктовані й надруковані шар за шаром в Аліканте. Замовляйте у WhatsApp.",
-    soundOn: "Звук: так", soundOff: "Звук: ні",
-    lead: "Портсигари й футляри на магнітах, спроєктовані й надруковані шар за шаром в Аліканте.",
-    cta: "Замовити у WhatsApp", sticker: "Послухати клац",
-    belt: "МАГНІТИ · PETG · ВЛАСНИЙ ДИЗАЙН · РУЧНА РОБОТА · АЛІКАНТЕ · ",
-    models: "Моделі", want: "Хочу", soon: "Фото скоро буде", alt: "3D-рендер: ",
-    howTitle: "Як замовити",
-    step1: "Оберіть модель.",
-    step2: "Оберіть колір з тих, що є в наявності.",
-    step3: "Напишіть мені у WhatsApp. Передаю особисто в Аліканте; про доставку питайте.",
-    detailsTitle: "Деталі",
-    fPetg: "Пластик, який не боїться ударів і спеки.",
-    fMagT: "Магніти", fMag: "Магнітні замки, що відкриваються й закриваються з клацанням.",
-    fHandT: "Ручна робота", fHand: "Кожну річ друкую й збираю вручну в Аліканте.",
-    fCustT: "Персоналізація", fCust: "Ім'я, ініціали або простий логотип: +5 €.",
-    footer: "Власний дизайн, ручна робота в Аліканте.",
-    adults: "Лише для повнолітніх (18+).",
-    msgHero: "Привіт! Хочу портсигар. Які є моделі й кольори?",
-    msgItem: (n, p) => `Привіт! Хочу «${n}» (${p} €). Які є кольори?`
-  },
-  ru: {
-    title: "Capas Studio 3D · Портсигары, напечатанные на 3D-принтере в Аликанте",
-    desc: "Портсигары и футляры на магнитах, спроектированные и напечатанные слой за слоем в Аликанте. Заказывайте в WhatsApp.",
-    soundOn: "Звук: да", soundOff: "Звук: нет",
-    lead: "Портсигары и футляры на магнитах, спроектированные и напечатанные слой за слоем в Аликанте.",
-    cta: "Заказать в WhatsApp", sticker: "Послушать клац",
-    belt: "МАГНИТЫ · PETG · СВОЙ ДИЗАЙН · РУЧНАЯ РАБОТА · АЛИКАНТЕ · ",
-    models: "Модели", want: "Хочу", soon: "Фото скоро будет", alt: "3D-рендер: ",
-    howTitle: "Как заказать",
-    step1: "Выберите модель.",
-    step2: "Выберите цвет из тех, что есть в наличии.",
-    step3: "Напишите мне в WhatsApp. Передаю лично в Аликанте; о доставке спрашивайте.",
-    detailsTitle: "Детали",
-    fPetg: "Пластик, который не боится ударов и жары.",
-    fMagT: "Магниты", fMag: "Магнитные замки, которые открываются и закрываются с щелчком.",
-    fHandT: "Ручная работа", fHand: "Каждую вещь печатаю и собираю вручную в Аликанте.",
-    fCustT: "Персонализация", fCust: "Имя, инициалы или простой логотип: +5 €.",
-    footer: "Свой дизайн, ручная работа в Аликанте.",
-    adults: "Только для совершеннолетних (18+).",
-    msgHero: "Привет! Хочу портсигар. Какие есть модели и цвета?",
-    msgItem: (n, p) => `Привет! Хочу «${n}» (${p} €). Какие есть цвета?`
-  }
-};
-
-const MODELS = [
-  { img: "img/plana.jpg", price: 18,
-    name: { es: "Plana carbono", en: "Flat carbon", uk: "Плаский карбон", ru: "Плоский карбон" },
-    facts: {
-      es: ["98 × 64 × 25 mm, cabe en el bolsillo", "Textura de fibra de carbono", "Hueco para papel y fila de 15 filtros"],
-      en: ["98 × 64 × 25 mm, fits in a pocket", "Carbon-fibre texture", "Slot for papers and a row of 15 filters"],
-      uk: ["98 × 64 × 25 мм, вміщується в кишеню", "Текстура карбону", "Місце для паперу і ряд на 15 фільтрів"],
-      ru: ["98 × 64 × 25 мм, помещается в карман", "Текстура карбона", "Место для бумаги и ряд на 15 фильтров"] } },
-  { img: "img/cerilla.jpg", price: 18,
-    name: { es: "Cerilla", en: "Cerilla", uk: "Cerilla", ru: "Cerilla" },
-    facts: {
-      es: ["Cajón deslizante, como una caja de cerillas", "Funda con textura de panal"],
-      en: ["Sliding drawer, like a matchbox", "Sleeve with a honeycomb texture"],
-      uk: ["Висувна шухляда, як у сірниковій коробці", "Корпус із текстурою сот"],
-      ru: ["Выдвижной ящик, как у спичечного коробка", "Корпус с текстурой сот"] } },
-  { img: "", price: 20,
-    name: { es: "Swivel", en: "Swivel", uk: "Swivel", ru: "Swivel" },
-    facts: {
-      es: ["La tapa gira hacia un lado sobre un eje", "Sitio para 24 filtros"],
-      en: ["The lid swings to the side on a pivot", "Room for 24 filters"],
-      uk: ["Кришка відкривається вбік на осі", "Місце для 24 фільтрів"],
-      ru: ["Крышка открывается вбок на оси", "Место для 24 фильтров"] } },
-  { img: "img/redonda.jpg", price: 22,
-    name: { es: "Redonda carbono", en: "Round carbon", uk: "Круглий карбон", ru: "Круглый карбон" },
-    facts: {
-      es: ["Ø 95 mm", "Textura de fibra de carbono", "Compartimento para filtros y papel"],
-      en: ["Ø 95 mm", "Carbon-fibre texture", "Compartment for filters and papers"],
-      uk: ["Ø 95 мм", "Текстура карбону", "Відсік для фільтрів і паперу"],
-      ru: ["Ø 95 мм", "Текстура карбона", "Отсек для фильтров и бумаги"] } },
-  { img: "img/monolito.jpg", price: 22,
-    name: { es: "Monolito", en: "Monolith", uk: "Моноліт", ru: "Монолит" },
-    facts: {
-      es: ["Tapa que corre por raíles", "Cargador de filtros que sale con un botón", "Ranura para el papel"],
-      en: ["Lid that slides on rails", "Filter magazine that pops out at the push of a button", "Slot for papers"],
-      uk: ["Кришка ковзає в пазах", "Магазин фільтрів виходить натисканням кнопки", "Щілина для паперу"],
-      ru: ["Крышка скользит в пазах", "Магазин фильтров выходит нажатием кнопки", "Щель для бумаги"] } },
-  { img: "img/artemon.jpg", price: 25,
-    name: { es: "Artemón", en: "Artemón", uk: "Артемон", ru: "Артемон" },
-    facts: {
-      es: ["Escamas en relieve", "Se abre en dos mitades"],
-      en: ["Raised scale pattern", "Opens in two halves"],
-      uk: ["Рельєфна луска", "Відкривається на дві половини"],
-      ru: ["Рельефная чешуя", "Открывается на две половины"] } },
-  { img: "img/libro.jpg", price: 29,
-    name: { es: "Libro", en: "Book", uk: "Книжка", ru: "Книжка" },
-    facts: {
-      es: ["156 × 88 × 36 mm", "Se abre como un libro", "Varios compartimentos con tapa"],
-      en: ["156 × 88 × 36 mm", "Opens like a book", "Several compartments with lids"],
-      uk: ["156 × 88 × 36 мм", "Відкривається як книжка", "Кілька відсіків із кришками"],
-      ru: ["156 × 88 × 36 мм", "Открывается как книга", "Несколько отсеков с крышками"] } }
-];
-
-function detectLang() {
-  const q = new URLSearchParams(location.search).get("lang");
-  if (q && SUPPORTED.includes(q)) return q;
-  for (const l of (navigator.languages || [navigator.language || "es"])) {
-    const code = l.slice(0, 2).toLowerCase();
-    if (SUPPORTED.includes(code)) return code;
-  }
-  return "es";
-}
-
-let lang = detectLang();
-
-function waLink(text) {
-  if (!CONFIG.whatsapp) return "#";
-  return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(text);
-}
-
-function renderModels() {
-  const t = UI[lang];
-  const grid = document.getElementById("grid");
-  grid.innerHTML = "";
-  for (const m of MODELS) {
-    const name = m.name[lang];
-    const card = document.createElement("article");
-    card.className = "card";
-    const pic = m.img
-      ? `<img src="${m.img}" alt="${t.alt}${name}" loading="lazy">`
-      : `<div class="none">${t.soon}</div>`;
-    card.innerHTML = `
-      <div class="pic">${pic}</div>
-      <div class="body">
-        <h3>${name}</h3>
-        <ul>${m.facts[lang].map(f => `<li>${f}</li>`).join("")}</ul>
-        <div class="row">
-          <span class="price">${m.price} €</span>
-          <a class="want clac wa" href="${waLink(t.msgItem(name, m.price))}">${t.want}</a>
-        </div>
-      </div>`;
-    grid.appendChild(card);
-  }
-}
-
-function applyLang() {
-  const t = UI[lang];
-  document.documentElement.lang = lang;
-  document.title = t.title;
-  document.querySelector('meta[name="description"]').content = t.desc;
-  document.querySelectorAll("[data-i]").forEach(el => { el.textContent = t[el.dataset.i]; });
-  document.querySelectorAll("[data-i-aria]").forEach(el => { el.setAttribute("aria-label", t[el.dataset.iAria]); });
-  document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
-  document.getElementById("belt").textContent = t.belt.repeat(8);
-  const hero = document.querySelector(".cta");
-  hero.href = waLink(t[hero.dataset.msgkey]);
-  renderModels();
-  for (const a of document.querySelectorAll("a.wa")) {
-    if (CONFIG.whatsapp) { a.target = "_blank"; a.rel = "noopener"; }
-  }
-  paintSound();
-}
-
-document.querySelectorAll(".langs button").forEach(b => {
-  b.addEventListener("click", () => {
-    lang = b.dataset.lang;
-    const url = new URL(location.href);
-    url.searchParams.set("lang", lang);
-    history.replaceState(null, "", url);
-    applyLang();
-  });
-});
-
-if (CONFIG.instagram) {
-  document.getElementById("ig").innerHTML =
-    `Instagram: <a href="https://instagram.com/${CONFIG.instagram}" target="_blank" rel="noopener">@${CONFIG.instagram}</a>`;
-}
-
-let soundOn = true;
-try { soundOn = localStorage.getItem("capas-sound") !== "off"; } catch (e) {}
-const soundBtn = document.getElementById("sound");
-function paintSound() {
-  soundBtn.textContent = soundOn ? UI[lang].soundOn : UI[lang].soundOff;
-  soundBtn.setAttribute("aria-pressed", String(soundOn));
-}
-
-let ctx = null;
-function clac() {
-  if (!soundOn) return;
-  ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
-  const t = ctx.currentTime;
-  const len = Math.floor(ctx.sampleRate * 0.03);
-  const buf = ctx.createBuffer(1, len, ctx.sampleRate);
-  const d = buf.getChannelData(0);
-  for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 6);
-  const noise = ctx.createBufferSource();
-  noise.buffer = buf;
-  const hp = ctx.createBiquadFilter();
-  hp.type = "highpass"; hp.frequency.value = 2500;
-  const nGain = ctx.createGain(); nGain.gain.value = 0.9;
-  noise.connect(hp).connect(nGain).connect(ctx.destination);
-  const osc = ctx.createOscillator();
-  const oGain = ctx.createGain();
-  osc.frequency.setValueAtTime(190, t);
-  osc.frequency.exponentialRampToValueAtTime(55, t + 0.06);
-  oGain.gain.setValueAtTime(0.6, t);
-  oGain.gain.exponentialRampToValueAtTime(0.001, t + 0.07);
-  osc.connect(oGain).connect(ctx.destination);
-  noise.start(t); osc.start(t); osc.stop(t + 0.08);
-}
-
-document.addEventListener("pointerdown", e => {
-  const el = e.target.closest(".clac");
-  if (!el) return;
-  el.classList.add("down");
-  clac();
-});
-const release = () => document.querySelectorAll(".clac.down").forEach(el => el.classList.remove("down"));
-document.addEventListener("pointerup", release);
-document.addEventListener("pointercancel", release);
-document.addEventListener("pointerleave", release);
-
-soundBtn.addEventListener("click", () => {
-  soundOn = !soundOn;
-  try { localStorage.setItem("capas-sound", soundOn ? "on" : "off"); } catch (e) {}
-  paintSound();
-});
-
-applyLang();
-</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/filament.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

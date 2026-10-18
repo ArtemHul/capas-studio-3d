@@ -150,7 +150,9 @@ function buildAnims() {
       });
     } else {
     const dist = () => Math.max(0, track.scrollWidth - window.innerWidth);
-    const fits = track.offsetHeight <= window.innerHeight * 0.96;
+    const fits = hsBox.offsetHeight <= window.innerHeight * 0.98;
+    const bar = $(".mp-bar i");
+    const step = () => (cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : 1);
     gsap.from($$(".card-media", track), {
       clipPath: "inset(100% 0 0 0)", ease: LAYER, duration: 1, stagger: 0.12,
       scrollTrigger: { trigger: models, start: "top 65%", once: true }
@@ -166,10 +168,20 @@ function buildAnims() {
         scrollTrigger: {
           trigger: hsBox, start: "center center", end: () => "+=" + dist(), pin: true, scrub: 0.8,
           anticipatePin: 1, invalidateOnRefresh: true,
-          onUpdate: self => skew(gsap.utils.clamp(-4, 4, self.getVelocity() / -500)),
+          onUpdate: self => { skew(gsap.utils.clamp(-4, 4, self.getVelocity() / -500)); gsap.set(bar, { scaleX: self.progress }); },
           onLeave: () => skew(0), onLeaveBack: () => skew(0)
         }
       });
+      // стрілки: перехід до попередньої / наступної моделі
+      const goCard = dir => {
+        const st = hs.scrollTrigger;
+        const cur = Math.round(st.progress * dist() / step());
+        const k = gsap.utils.clamp(0, cards.length - 1, cur + dir);
+        const y = st.start + (st.end - st.start) * Math.min(1, (k * step()) / dist());
+        if (smoother) smoother.scrollTo(y, true); else window.scrollTo({ top: y, behavior: "smooth" });
+      };
+      $(".mp-prev").onclick = () => goCard(-1);
+      $(".mp-next").onclick = () => goCard(1);
       $$(".card-media img", track).forEach(img => {
         gsap.fromTo(img, { scale: 1.18 }, {
           scale: 1, ease: "none",
@@ -177,7 +189,12 @@ function buildAnims() {
         });
       });
     } else {
+      // не влазить у висоту екрана: стрічка гортається сама, стрілки й смужка лишаються
       track.classList.add("native");
+      const paint = () => gsap.set(bar, { scaleX: track.scrollLeft / Math.max(1, track.scrollWidth - track.clientWidth) });
+      track.onscroll = paint; paint();
+      $(".mp-prev").onclick = () => track.scrollBy({ left: -step(), behavior: "smooth" });
+      $(".mp-next").onclick = () => track.scrollBy({ left: step(), behavior: "smooth" });
     }
     }
 

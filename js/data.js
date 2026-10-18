@@ -33,7 +33,8 @@ const UI = {
     printing: "Imprimiendo", layer: "capa",
     manifesto: "Diseño propio. Impreso capa a capa en PETG. Imanes y montaje a mano en Alicante.",
     scrollHint: "Desliza", view: "Ver", close: "Cerrar", prev: "Anterior", next: "Siguiente",
-    dragHint: "Arrastra", modelsCount: "modelos"
+    dragHint: "Arrastra", modelsCount: "modelos",
+    scrollModels: "Desliza para ver todos"
   },
   en: {
     title: "Capas Studio 3D · 3D-printed cigarette cases in Alicante",
@@ -59,7 +60,8 @@ const UI = {
     printing: "Printing", layer: "layer",
     manifesto: "Own design. Printed layer by layer in PETG. Magnets and assembly by hand in Alicante.",
     scrollHint: "Scroll", view: "View", close: "Close", prev: "Previous", next: "Next",
-    dragHint: "Drag", modelsCount: "models"
+    dragHint: "Drag", modelsCount: "models",
+    scrollModels: "Scroll to see them all"
   },
   uk: {
     title: "Capas Studio 3D · Портсигари, надруковані на 3D-принтері в Аліканте",
@@ -85,7 +87,8 @@ const UI = {
     printing: "Друкуємо", layer: "шар",
     manifesto: "Власний дизайн. Друк шар за шаром з PETG. Магніти й складання вручну в Аліканте.",
     scrollHint: "Гортайте", view: "Дивитись", close: "Закрити", prev: "Назад", next: "Далі",
-    dragHint: "Тягніть", modelsCount: "моделей"
+    dragHint: "Тягніть", modelsCount: "моделей",
+    scrollModels: "Гортайте, щоб побачити всі"
   },
   ru: {
     title: "Capas Studio 3D · Портсигары, напечатанные на 3D-принтере в Аликанте",
@@ -111,7 +114,8 @@ const UI = {
     printing: "Печатаем", layer: "слой",
     manifesto: "Свой дизайн. Печать слой за слоем из PETG. Магниты и сборка вручную в Аликанте.",
     scrollHint: "Листайте", view: "Смотреть", close: "Закрыть", prev: "Назад", next: "Далее",
-    dragHint: "Тяните", modelsCount: "моделей"
+    dragHint: "Тяните", modelsCount: "моделей",
+    scrollModels: "Листайте, чтобы увидеть все"
   }
 };
 

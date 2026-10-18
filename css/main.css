@@ -108,6 +108,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .view-btn{font-family:var(--f-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);text-decoration:underline;text-underline-offset:4px}
 .no-motion .track,.track.native{overflow-x:auto;scroll-snap-type:x mandatory;width:auto;scrollbar-width:none}
 .track.native .card{scroll-snap-align:start}
+@media (max-width:899px){
+  .track,.track.native{flex-direction:column;width:auto;overflow:visible;scroll-snap-type:none;gap:clamp(56px,10vh,90px)}
+  .card{width:100%}
+  .card-media{aspect-ratio:4/4.4}
+}
 
 /* --- заглушка: «шари друку» --- */
 .ph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;background:var(--frame);color:var(--frame-ink);overflow:hidden}

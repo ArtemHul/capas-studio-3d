@@ -4,6 +4,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText, Flip, Draggable, I
 
 const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const DESKTOP = matchMedia("(pointer: fine) and (min-width: 900px)").matches;
+const MOBILE_MQ = matchMedia("(max-width: 899px)"); // на телефоні моделі йдуть вертикальним списком
 const LAYER = "steps(14)"; // «шаровий» крок для появи
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -94,6 +95,8 @@ function applyLang() {
   buildAnims();
 }
 
+MOBILE_MQ.addEventListener("change", () => { if (anim) { anim.revert(); anim = null; } buildAnims(); });
+
 $$(".langs button").forEach(b => b.addEventListener("click", () => {
   if (b.dataset.lang === lang) return;
   lang = b.dataset.lang;
@@ -133,9 +136,21 @@ function buildAnims() {
     // стрічка моделей: закріплюється і їде вбік; якщо секція не влазить в екран — звичайний свайп
     const models = $(".models");
     const hsBox = $(".hs");
+    const cards = $$(".card", track);
+    if (MOBILE_MQ.matches) {
+      // телефон: вертикальний список, кожна картка «друкується», коли до неї докрутили
+      cards.forEach(card => {
+        const media = $(".card-media", card), info = $(".card-info", card), img = $("img", media);
+        gsap.from(media, { clipPath: "inset(100% 0 0 0)", ease: LAYER, duration: 1,
+          scrollTrigger: { trigger: card, start: "top 85%", once: true } });
+        gsap.from(info, { y: 30, opacity: 0, duration: 0.9, ease: "power4.out", delay: 0.25,
+          scrollTrigger: { trigger: card, start: "top 85%", once: true } });
+        if (img) gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: "none",
+          scrollTrigger: { trigger: media, start: "top bottom", end: "bottom top", scrub: true } });
+      });
+    } else {
     const dist = () => Math.max(0, track.scrollWidth - window.innerWidth);
     const fits = track.offsetHeight <= window.innerHeight * 0.96;
-    const cards = $$(".card", track);
     gsap.from($$(".card-media", track), {
       clipPath: "inset(100% 0 0 0)", ease: LAYER, duration: 1, stagger: 0.12,
       scrollTrigger: { trigger: models, start: "top 65%", once: true }
@@ -163,6 +178,7 @@ function buildAnims() {
       });
     } else {
       track.classList.add("native");
+    }
     }
 
     // кроки й факти: номери «друкуються» сходинкою

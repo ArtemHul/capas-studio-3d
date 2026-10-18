@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capas Studio 3D · Pitilleras impresas en 3D en Alicante</title>
+<meta name="description" content="Pitilleras y estuches con imán, diseñados e impresos capa a capa en Alicante. Pide el tuyo por WhatsApp.">
+<meta property="og:title" content="Capas Studio 3D">
+<meta property="og:description" content="Pitilleras y estuches con imán, hechos en Alicante.">
+<meta property="og:image" content="img/libro.jpg">
+<meta name="theme-color" content="#FFFF00">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FFFF00'/%3E%3Crect x='6' y='9' width='20' height='3' fill='%23000'/%3E%3Crect x='6' y='15' width='20' height='3' fill='%23000'/%3E%3Crect x='6' y='21' width='20' height='3' fill='%23000'/%3E%3C/svg%3E">
+<style>
+:root{--y:#FFFF00;--k:#000;--w:#FFF;--shadow:8px 8px 0 #000;--f-black:"Arial Black","Arial Bold",Gadget,Arial,sans-serif;--f-sans:Helvetica,Arial,sans-serif;--f-mono:"Courier New",Courier,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--y)}
+body{background:var(--y);color:var(--k);font-family:var(--f-sans);font-size:18px;line-height:1.45;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:var(--k)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+
+.clac{cursor:pointer;transition:transform 60ms linear,box-shadow 60ms linear;-webkit-tap-highlight-color:transparent;user-select:none}
+.clac.down{transform:translate(8px,8px);box-shadow:0 0 0 #000 !important}
+
+header{border-bottom:4px solid var(--k);background:var(--y);position:sticky;top:0;z-index:5}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:60px;gap:12px}
+.logo{font-family:var(--f-black);font-size:20px;letter-spacing:-0.5px;text-decoration:none;white-space:nowrap}
+.sound{font-family:var(--f-mono);font-size:14px;font-weight:bold;background:var(--w);border:3px solid var(--k);padding:6px 10px;box-shadow:4px 4px 0 #000}
+.sound.down{transform:translate(4px,4px)}
+
+.hero{padding:40px 0 56px;position:relative}
+.hero h1{font-family:var(--f-black);font-size:clamp(84px,24vw,260px);line-height:0.82;letter-spacing:-0.04em;margin-left:-0.04em}
+.hero .sub{font-family:var(--f-black);font-size:clamp(22px,5vw,44px);margin-top:10px}
+.hero .lead{max-width:30ch;font-size:20px;margin-top:22px}
+.sticker{position:absolute;right:16px;top:28px;width:clamp(110px,22vw,190px);aspect-ratio:1;border-radius:50%;background:var(--k);color:var(--y);font-family:var(--f-black);font-size:clamp(22px,4.4vw,38px);display:flex;align-items:center;justify-content:center;transform:rotate(-12deg);border:none}
+.sticker.down{transform:rotate(-12deg) scale(0.9)}
+.cta{display:inline-block;margin-top:28px;font-family:var(--f-black);font-size:20px;text-decoration:none;background:var(--k);color:var(--y);padding:16px 22px;border:4px solid var(--k);box-shadow:8px 8px 0 #fff}
+.cta.down{box-shadow:0 0 0 #fff !important}
+
+.belt{background:var(--k);color:var(--y);font-family:var(--f-black);font-size:18px;white-space:nowrap;overflow:hidden;border-top:4px solid var(--k);border-bottom:4px solid var(--k)}
+.belt span{display:inline-block;padding:12px 0;animation:run 22s linear infinite}
+@keyframes run{to{transform:translateX(-50%)}}
+
+section{padding:56px 0;scroll-margin-top:64px}
+h2{font-family:var(--f-black);font-size:clamp(40px,9vw,88px);line-height:0.9;letter-spacing:-0.03em;margin-bottom:28px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px}
+.card{background:var(--w);border:4px solid var(--k);box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card .pic{border-bottom:4px solid var(--k);aspect-ratio:4/3;background:var(--w);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card .pic img{width:100%;height:100%;object-fit:contain}
+.card .pic .none{font-family:var(--f-mono);font-size:15px;text-align:center;padding:20px}
+.card .body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-family:var(--f-black);font-size:26px;line-height:1}
+.card ul{list-style:none;font-size:16px}
+.card li{padding-left:16px;position:relative}
+.card li:before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;background:var(--k)}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;gap:10px}
+.price{font-family:var(--f-mono);font-weight:bold;font-size:30px}
+.want{font-family:var(--f-black);font-size:17px;background:var(--y);border:4px solid var(--k);padding:10px 14px;text-decoration:none;box-shadow:5px 5px 0 #000}
+.want.down{transform:translate(5px,5px)}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;counter-reset:s}
+.step{background:var(--k);color:var(--w);padding:22px;border:4px solid var(--k);box-shadow:8px 8px 0 #fff}
+.step b{display:block;font-family:var(--f-black);font-size:64px;line-height:1;color:var(--y)}
+.step p{font-size:19px;margin-top:8px}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border:4px solid var(--k);background:var(--w)}
+.facts div{padding:18px;border:2px solid var(--k)}
+.facts b{font-family:var(--f-black);font-size:21px;display:block}
+
+footer{background:var(--k);color:var(--y);padding:40px 0 48px;margin-top:20px}
+footer .big{font-family:var(--f-black);font-size:clamp(34px,8vw,72px);line-height:0.95}
+footer p{font-family:var(--f-mono);font-size:15px;margin-top:14px;color:var(--w)}
+footer a{color:var(--y)}
+
+@media (max-width:600px){
+  .sticker{top:auto;bottom:-30px;right:12px}
+  .hero{padding-bottom:70px}
+  body{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){.belt span{animation:none}.clac{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#">CAPAS STUDIO 3D</a>
+    <button class="sound clac" id="sound" type="button" aria-pressed="true">Sonido: sí</button>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <h1>CAPAS</h1>
+    <div class="sub">studio 3D · Alicante</div>
+    <p class="lead">Pitilleras y estuches con imán, diseñados e impresos capa a capa en Alicante.</p>
+    <a class="cta clac wa" data-msg="Hola, quiero una pitillera. ¿Qué modelos y colores tienes?" href="#">Pedir por WhatsApp</a>
+    <button class="sticker clac" type="button" aria-label="Escuchar el clac">¡CLAC!</button>
+  </div>
+
+  <div class="belt" aria-hidden="true"><span id="belt"></span></div>
+
+  <section id="modelos">
+    <div class="wrap">
+      <h2>Modelos</h2>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section id="pedir">
+    <div class="wrap">
+      <h2>Cómo pedir</h2>
+      <div class="steps">
+        <div class="step"><b>1</b><p>Elige el modelo.</p></div>
+        <div class="step"><b>2</b><p>Elige el color. Imprimo en el que quieras de los que tengo.</p></div>
+        <div class="step"><b>3</b><p>Escríbeme por WhatsApp. Entrega en mano en Alicante; envíos, pregúntame.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="detalles">
+    <div class="wrap">
+      <h2>Detalles</h2>
+      <div class="facts">
+        <div><b>PETG</b>Plástico resistente a golpes y al calor.</div>
+        <div><b>Imanes</b>Cierres magnéticos, se abren y cierran con un clac.</div>
+        <div><b>Sin pegamento</b>Mecanismos que encajan solos.</div>
+        <div><b>Personalizado</b>Nombre, iniciales o un logo sencillo: +5 €.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="big">CAPAS STUDIO 3D</div>
+    <p>Diseño propio, hecho a mano en Alicante. <span id="ig"></span></p>
+    <p>Solo para mayores de 18 años.</p>
+  </div>
+</footer>
+
+<script>
+const CONFIG = {
+  whatsapp: "",            // número con código de país, solo cifras, p. ej. 34600000000
+  instagram: ""            // nombre de usuario sin @
+};
+
+const MODELS = [
+  { name: "Plana carbono", img: "img/plana.jpg", price: 18,
+    facts: ["98 × 64 × 25 mm, cabe en el bolsillo", "Textura de fibra de carbono", "Hueco para papel y fila de 15 filtros"] },
+  { name: "Cerilla", img: "img/cerilla.jpg", price: 18,
+    facts: ["Cajón deslizante, como una caja de cerillas", "Funda con textura de panal"] },
+  { name: "Swivel", img: "", price: 20,
+    facts: ["La tapa gira hacia un lado sobre un eje", "Sitio para 24 filtros"] },
+  { name: "Redonda carbono", img: "img/redonda.jpg", price: 22,
+    facts: ["Ø 95 mm", "Textura de fibra de carbono", "Compartimento para filtros y papel"] },
+  { name: "Monolito", img: "img/monolito.jpg", price: 22,
+    facts: ["Tapa que corre por raíles", "Cargador de filtros que sale con un botón", "Ranura para el papel"] },
+  { name: "Artemón", img: "img/artemon.jpg", price: 25,
+    facts: ["Escamas en relieve", "Se abre en dos mitades"] },
+  { name: "Libro", img: "img/libro.jpg", price: 29,
+    facts: ["156 × 88 × 36 mm", "Se abre como un libro", "Varios compartimentos con tapa"] }
+];
+
+const BELT = "IMANES · SIN PEGAMENTO · PETG · DISEÑO PROPIO · HECHO EN ALICANTE · ";
+
+function waLink(text) {
+  if (!CONFIG.whatsapp) return "#";
+  return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(text);
+}
+
+document.getElementById("belt").textContent = BELT.repeat(8);
+
+const grid = document.getElementById("grid");
+for (const m of MODELS) {
+  const card = document.createElement("article");
+  card.className = "card";
+  const pic = m.img
+    ? `<img src="${m.img}" alt="Render 3D de la ${m.name}" loading="lazy">`
+    : `<div class="none">Foto próximamente</div>`;
+  card.innerHTML = `
+    <div class="pic">${pic}</div>
+    <div class="body">
+      <h3>${m.name}</h3>
+      <ul>${m.facts.map(f => `<li>${f}</li>`).join("")}</ul>
+      <div class="row">
+        <span class="price">${m.price} €</span>
+        <a class="want clac wa" href="#" data-msg="Hola, quiero la ${m.name} (${m.price} €). ¿Qué colores tienes?">Lo quiero</a>
+      </div>
+    </div>`;
+  grid.appendChild(card);
+}
+
+for (const a of document.querySelectorAll("a.wa")) {
+  a.href = waLink(a.dataset.msg);
+  if (CONFIG.whatsapp) { a.target = "_blank"; a.rel = "noopener"; }
+}
+if (CONFIG.instagram) {
+  document.getElementById("ig").innerHTML =
+    `Instagram: <a href="https://instagram.com/${CONFIG.instagram}" target="_blank" rel="noopener">@${CONFIG.instagram}</a>`;
+}
+
+let soundOn = true;
+try { soundOn = localStorage.getItem("capas-sound") !== "off"; } catch (e) {}
+const soundBtn = document.getElementById("sound");
+function paintSound() {
+  soundBtn.textContent = "Sonido: " + (soundOn ? "sí" : "no");
+  soundBtn.setAttribute("aria-pressed", String(soundOn));
+}
+paintSound();
+
+let ctx = null;
+function clac() {
+  if (!soundOn) return;
+  ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+  const t = ctx.currentTime;
+  const len = Math.floor(ctx.sampleRate * 0.03);
+  const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+  const d = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 6);
+  const noise = ctx.createBufferSource();
+  noise.buffer = buf;
+  const hp = ctx.createBiquadFilter();
+  hp.type = "highpass"; hp.frequency.value = 2500;
+  const nGain = ctx.createGain(); nGain.gain.value = 0.9;
+  noise.connect(hp).connect(nGain).connect(ctx.destination);
+  const osc = ctx.createOscillator();
+  const oGain = ctx.createGain();
+  osc.frequency.setValueAtTime(190, t);
+  osc.frequency.exponentialRampToValueAtTime(55, t + 0.06);
+  oGain.gain.setValueAtTime(0.6, t);
+  oGain.gain.exponentialRampToValueAtTime(0.001, t + 0.07);
+  osc.connect(oGain).connect(ctx.destination);
+  noise.start(t); osc.start(t); osc.stop(t + 0.08);
+}
+
+document.addEventListener("pointerdown", e => {
+  const el = e.target.closest(".clac");
+  if (!el) return;
+  el.classList.add("down");
+  clac();
+});
+const release = () => document.querySelectorAll(".clac.down").forEach(el => el.classList.remove("down"));
+document.addEventListener("pointerup", release);
+document.addEventListener("pointercancel", release);
+document.addEventListener("pointerleave", release);
+
+soundBtn.addEventListener("click", () => {
+  soundOn = !soundOn;
+  try { localStorage.setItem("capas-sound", soundOn ? "on" : "off"); } catch (e) {}
+  paintSound();
+});
+</script>
+</body>
+</html>

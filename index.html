@@ -8,10 +8,12 @@
 <meta property="og:title" content="Capas Studio 3D">
 <meta property="og:description" content="Pitilleras y estuches con imán, hechos en Alicante.">
 <meta property="og:image" content="img/libro.jpg">
-<meta name="theme-color" content="#FFFF00">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FFFF00'/%3E%3Crect x='6' y='9' width='20' height='3' fill='%23000'/%3E%3Crect x='6' y='15' width='20' height='3' fill='%23000'/%3E%3Crect x='6' y='21' width='20' height='3' fill='%23000'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#F2DC72">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F2DC72'/%3E%3Crect x='6' y='9' width='20' height='3' fill='%23000'/%3E%3Crect x='6' y='15' width='20' height='3' fill='%23000'/%3E%3Crect x='6' y='21' width='20' height='3' fill='%23000'/%3E%3C/svg%3E">
 <style>
-:root{--y:#FFFF00;--k:#000;--w:#FFF;--shadow:8px 8px 0 #000;--f-black:"Arial Black","Arial Bold",Gadget,Arial,sans-serif;--f-sans:Helvetica,Arial,sans-serif;--f-mono:"Courier New",Courier,monospace}
+@font-face{font-family:"Bebas Neue";src:url(fonts/BebasNeue.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"Anonymous Pro";font-weight:700;src:url(fonts/AnonymousPro-Bold.ttf) format("truetype");font-display:swap}
+:root{--y:#F2DC72;--k:#1A1A1A;--w:#FFFDF6;--sh:rgba(26,26,26,.18);--shadow:6px 6px 0 var(--sh);--f-black:"Bebas Neue","Arial Narrow",Arial,sans-serif;--f-sans:Helvetica,Arial,sans-serif;--f-mono:"Anonymous Pro","Courier New",monospace}
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--y)}
 body{background:var(--y);color:var(--k);font-family:var(--f-sans);font-size:18px;line-height:1.45;overflow-x:hidden}
@@ -20,56 +22,56 @@ a{color:var(--k)}
 .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
 
 .clac{cursor:pointer;transition:transform 60ms linear,box-shadow 60ms linear;-webkit-tap-highlight-color:transparent;user-select:none}
-.clac.down{transform:translate(8px,8px);box-shadow:0 0 0 #000 !important}
+.clac.down{transform:translate(5px,5px);box-shadow:0 0 0 transparent !important}
 
-header{border-bottom:4px solid var(--k);background:var(--y);position:sticky;top:0;z-index:5}
+header{border-bottom:3px solid var(--k);background:var(--y);position:sticky;top:0;z-index:5}
 header .wrap{display:flex;justify-content:space-between;align-items:center;height:60px;gap:12px}
-.logo{font-family:var(--f-black);font-size:20px;letter-spacing:-0.5px;text-decoration:none;white-space:nowrap}
-.sound{font-family:var(--f-mono);font-size:14px;font-weight:bold;background:var(--w);border:3px solid var(--k);padding:6px 10px;box-shadow:4px 4px 0 #000}
-.sound.down{transform:translate(4px,4px)}
+.logo{font-family:var(--f-black);font-size:28px;letter-spacing:0.5px;text-decoration:none;white-space:nowrap}
+.sound{font-family:var(--f-mono);font-size:14px;font-weight:bold;background:var(--w);border:2px solid var(--k);padding:6px 10px;box-shadow:3px 3px 0 var(--sh)}
+.sound.down{transform:translate(3px,3px)}
 
 .hero{padding:40px 0 56px;position:relative}
-.hero h1{font-family:var(--f-black);font-size:clamp(84px,24vw,260px);line-height:0.82;letter-spacing:-0.04em;margin-left:-0.04em}
-.hero .sub{font-family:var(--f-black);font-size:clamp(22px,5vw,44px);margin-top:10px}
+.hero h1{font-family:var(--f-black);font-weight:400;font-size:clamp(120px,34vw,340px);line-height:0.8;letter-spacing:0.01em;margin-left:-0.03em}
+.hero .sub{font-family:var(--f-black);font-size:clamp(30px,7vw,60px);letter-spacing:0.04em;margin-top:6px}
 .hero .lead{max-width:30ch;font-size:20px;margin-top:22px}
-.sticker{position:absolute;right:16px;top:28px;width:clamp(110px,22vw,190px);aspect-ratio:1;border-radius:50%;background:var(--k);color:var(--y);font-family:var(--f-black);font-size:clamp(22px,4.4vw,38px);display:flex;align-items:center;justify-content:center;transform:rotate(-12deg);border:none}
+.sticker{position:absolute;right:16px;top:28px;width:clamp(110px,22vw,190px);aspect-ratio:1;border-radius:50%;background:var(--k);color:var(--y);font-family:var(--f-black);font-size:clamp(30px,6vw,52px);letter-spacing:0.03em;display:flex;align-items:center;justify-content:center;transform:rotate(-12deg);border:none}
 .sticker.down{transform:rotate(-12deg) scale(0.9)}
-.cta{display:inline-block;margin-top:28px;font-family:var(--f-black);font-size:20px;text-decoration:none;background:var(--k);color:var(--y);padding:16px 22px;border:4px solid var(--k);box-shadow:8px 8px 0 #fff}
-.cta.down{box-shadow:0 0 0 #fff !important}
+.cta{display:inline-block;margin-top:28px;font-family:var(--f-black);font-size:28px;letter-spacing:0.04em;text-decoration:none;background:var(--k);color:var(--y);padding:12px 24px;border:3px solid var(--k);box-shadow:6px 6px 0 rgba(255,255,255,.55)}
+.cta.down{box-shadow:0 0 0 transparent !important}
 
-.belt{background:var(--k);color:var(--y);font-family:var(--f-black);font-size:18px;white-space:nowrap;overflow:hidden;border-top:4px solid var(--k);border-bottom:4px solid var(--k)}
+.belt{background:var(--k);color:var(--y);font-family:var(--f-black);font-size:26px;letter-spacing:0.06em;white-space:nowrap;overflow:hidden}
 .belt span{display:inline-block;padding:12px 0;animation:run 22s linear infinite}
 @keyframes run{to{transform:translateX(-50%)}}
 
 section{padding:56px 0;scroll-margin-top:64px}
-h2{font-family:var(--f-black);font-size:clamp(40px,9vw,88px);line-height:0.9;letter-spacing:-0.03em;margin-bottom:28px}
+h2{font-family:var(--f-black);font-weight:400;font-size:clamp(64px,14vw,130px);line-height:0.85;letter-spacing:0.01em;margin-bottom:24px}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px}
-.card{background:var(--w);border:4px solid var(--k);box-shadow:var(--shadow);display:flex;flex-direction:column}
-.card .pic{border-bottom:4px solid var(--k);aspect-ratio:4/3;background:var(--w);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card{background:var(--w);border:3px solid var(--k);box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card .pic{border-bottom:3px solid var(--k);aspect-ratio:4/3;background:var(--w);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .card .pic img{width:100%;height:100%;object-fit:contain}
 .card .pic .none{font-family:var(--f-mono);font-size:15px;text-align:center;padding:20px}
 .card .body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
-.card h3{font-family:var(--f-black);font-size:26px;line-height:1}
+.card h3{font-family:var(--f-black);font-weight:400;font-size:40px;letter-spacing:0.02em;line-height:0.95}
 .card ul{list-style:none;font-size:16px}
 .card li{padding-left:16px;position:relative}
-.card li:before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;background:var(--k)}
+.card li:before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;background:var(--k)}
 .card .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;gap:10px}
-.price{font-family:var(--f-mono);font-weight:bold;font-size:30px}
-.want{font-family:var(--f-black);font-size:17px;background:var(--y);border:4px solid var(--k);padding:10px 14px;text-decoration:none;box-shadow:5px 5px 0 #000}
-.want.down{transform:translate(5px,5px)}
+.price{font-family:var(--f-mono);font-weight:700;font-size:30px}
+.want{font-family:var(--f-black);font-size:24px;letter-spacing:0.04em;background:var(--y);border:3px solid var(--k);padding:6px 16px;text-decoration:none;box-shadow:4px 4px 0 var(--sh)}
+.want.down{transform:translate(4px,4px)}
 
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;counter-reset:s}
-.step{background:var(--k);color:var(--w);padding:22px;border:4px solid var(--k);box-shadow:8px 8px 0 #fff}
-.step b{display:block;font-family:var(--f-black);font-size:64px;line-height:1;color:var(--y)}
+.step{background:var(--k);color:var(--w);padding:22px;box-shadow:6px 6px 0 var(--sh)}
+.step b{display:block;font-family:var(--f-black);font-weight:400;font-size:84px;line-height:1;color:var(--y)}
 .step p{font-size:19px;margin-top:8px}
 
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border:4px solid var(--k);background:var(--w)}
-.facts div{padding:18px;border:2px solid var(--k)}
-.facts b{font-family:var(--f-black);font-size:21px;display:block}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border:3px solid var(--k);background:var(--w);box-shadow:var(--shadow)}
+.facts div{padding:18px;border:1px solid var(--k)}
+.facts b{font-family:var(--f-black);font-weight:400;font-size:32px;letter-spacing:0.03em;display:block}
 
 footer{background:var(--k);color:var(--y);padding:40px 0 48px;margin-top:20px}
-footer .big{font-family:var(--f-black);font-size:clamp(34px,8vw,72px);line-height:0.95}
+footer .big{font-family:var(--f-black);font-size:clamp(52px,12vw,110px);line-height:0.9;letter-spacing:0.02em}
 footer p{font-family:var(--f-mono);font-size:15px;margin-top:14px;color:var(--w)}
 footer a{color:var(--y)}
 
@@ -125,7 +127,7 @@ footer a{color:var(--y)}
       <div class="facts">
         <div><b>PETG</b>Plástico resistente a golpes y al calor.</div>
         <div><b>Imanes</b>Cierres magnéticos, se abren y cierran con un clac.</div>
-        <div><b>Sin pegamento</b>Mecanismos que encajan solos.</div>
+        <div><b>Hecho a mano</b>Cada pieza se imprime y se monta a mano en Alicante.</div>
         <div><b>Personalizado</b>Nombre, iniciales o un logo sencillo: +5 €.</div>
       </div>
     </div>
@@ -163,7 +165,7 @@ const MODELS = [
     facts: ["156 × 88 × 36 mm", "Se abre como un libro", "Varios compartimentos con tapa"] }
 ];
 
-const BELT = "IMANES · SIN PEGAMENTO · PETG · DISEÑO PROPIO · HECHO EN ALICANTE · ";
+const BELT = "IMANES · PETG · DISEÑO PROPIO · HECHO A MANO · ALICANTE · ";
 
 function waLink(text) {
   if (!CONFIG.whatsapp) return "#";

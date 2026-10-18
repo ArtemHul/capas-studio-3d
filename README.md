@@ -16,7 +16,7 @@
 Як оновити сайт після змін:
 
 ```bash
-rm -rf dist && mkdir dist && cp -r index.html img dist/
+rm -rf dist && mkdir dist && cp -r index.html img fonts dist/
 ```
 
 ```bash

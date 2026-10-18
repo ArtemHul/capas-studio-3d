@@ -81,6 +81,10 @@ footer a{color:var(--y)}
   body{font-size:17px}
 }
 @media (prefers-reduced-motion:reduce){.belt span{animation:none}.clac{transition:none}}
+.langs{display:flex;gap:8px;margin-bottom:22px}
+.langs button{font-family:var(--f-black);font-size:22px;letter-spacing:0.05em;background:transparent;color:var(--k);border:2px solid var(--k);padding:2px 10px;cursor:pointer}
+.langs button[aria-pressed="true"]{background:var(--k);color:var(--y)}
+.langs button:focus-visible,.cta:focus-visible,.want:focus-visible,.sound:focus-visible{outline:3px solid var(--k);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -88,47 +92,53 @@ footer a{color:var(--y)}
 <header>
   <div class="wrap">
     <a class="logo" href="#">CAPAS STUDIO 3D</a>
-    <button class="sound clac" id="sound" type="button" aria-pressed="true">Sonido: sí</button>
+    <button class="sound clac" id="sound" type="button" aria-pressed="true"></button>
   </div>
 </header>
 
 <main>
   <div class="wrap hero">
+    <nav class="langs" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true" lang="es">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+      <button type="button" data-lang="uk" aria-pressed="false" lang="uk">UK</button>
+      <button type="button" data-lang="ru" aria-pressed="false" lang="ru">RU</button>
+    </nav>
     <h1>CAPAS</h1>
     <div class="sub">studio 3D · Alicante</div>
-    <p class="lead">Pitilleras y estuches con imán, diseñados e impresos capa a capa en Alicante.</p>
-    <a class="cta clac wa" data-msg="Hola, quiero una pitillera. ¿Qué modelos y colores tienes?" href="#">Pedir por WhatsApp</a>
-    <button class="sticker clac" type="button" aria-label="Escuchar el clac">¡CLAC!</button>
+    <p class="lead" data-i="lead"></p>
+    <a class="cta clac wa" data-msgkey="msgHero" data-i="cta" href="#"></a>
+    <button class="sticker clac" type="button" data-i-aria="sticker">¡CLAC!</button>
   </div>
 
   <div class="belt" aria-hidden="true"><span id="belt"></span></div>
 
   <section id="modelos">
     <div class="wrap">
-      <h2>Modelos</h2>
+      <h2 data-i="models"></h2>
       <div class="grid" id="grid"></div>
     </div>
   </section>
 
   <section id="pedir">
     <div class="wrap">
-      <h2>Cómo pedir</h2>
+      <h2 data-i="howTitle"></h2>
       <div class="steps">
-        <div class="step"><b>1</b><p>Elige el modelo.</p></div>
-        <div class="step"><b>2</b><p>Elige el color. Imprimo en el que quieras de los que tengo.</p></div>
-        <div class="step"><b>3</b><p>Escríbeme por WhatsApp. Entrega en mano en Alicante; envíos, pregúntame.</p></div>
+        <div class="step"><b>1</b><p data-i="step1"></p></div>
+        <div class="step"><b>2</b><p data-i="step2"></p></div>
+        <div class="step"><b>3</b><p data-i="step3"></p></div>
       </div>
     </div>
   </section>
 
   <section id="detalles">
     <div class="wrap">
-      <h2>Detalles</h2>
+      <h2 data-i="detailsTitle"></h2>
       <div class="facts">
-        <div><b>PETG</b>Plástico resistente a golpes y al calor.</div>
-        <div><b>Imanes</b>Cierres magnéticos, se abren y cierran con un clac.</div>
-        <div><b>Hecho a mano</b>Cada pieza se imprime y se monta a mano en Alicante.</div>
-        <div><b>Personalizado</b>Nombre, iniciales o un logo sencillo: +5 €.</div>
+        <div><b>PETG</b><span data-i="fPetg"></span></div>
+        <div><b data-i="fMagT"></b><span data-i="fMag"></span></div>
+        <div><b data-i="fHandT"></b><span data-i="fHand"></span></div>
+        <div><b data-i="fCustT"></b><span data-i="fCust"></span></div>
       </div>
     </div>
   </section>
@@ -137,8 +147,8 @@ footer a{color:var(--y)}
 <footer>
   <div class="wrap">
     <div class="big">CAPAS STUDIO 3D</div>
-    <p>Diseño propio, hecho a mano en Alicante. <span id="ig"></span></p>
-    <p>Solo para mayores de 18 años.</p>
+    <p><span data-i="footer"></span> <span id="ig"></span></p>
+    <p data-i="adults"></p>
   </div>
 </footer>
 
@@ -148,56 +158,221 @@ const CONFIG = {
   instagram: ""            // nombre de usuario sin @
 };
 
+const SUPPORTED = ["es", "en", "uk", "ru"];
+
+const UI = {
+  es: {
+    title: "Capas Studio 3D · Pitilleras impresas en 3D en Alicante",
+    desc: "Pitilleras y estuches con imán, diseñados e impresos capa a capa en Alicante. Pide el tuyo por WhatsApp.",
+    soundOn: "Sonido: sí", soundOff: "Sonido: no",
+    lead: "Pitilleras y estuches con imán, diseñados e impresos capa a capa en Alicante.",
+    cta: "Pedir por WhatsApp", sticker: "Escuchar el clac",
+    belt: "IMANES · PETG · DISEÑO PROPIO · HECHO A MANO · ALICANTE · ",
+    models: "Modelos", want: "Lo quiero", soon: "Foto próximamente", alt: "Render 3D: ",
+    howTitle: "Cómo pedir",
+    step1: "Elige el modelo.",
+    step2: "Elige el color. Imprimo en el que quieras de los que tengo.",
+    step3: "Escríbeme por WhatsApp. Entrega en mano en Alicante; envíos, pregúntame.",
+    detailsTitle: "Detalles",
+    fPetg: "Plástico resistente a golpes y al calor.",
+    fMagT: "Imanes", fMag: "Cierres magnéticos, se abren y cierran con un clac.",
+    fHandT: "Hecho a mano", fHand: "Cada pieza se imprime y se monta a mano en Alicante.",
+    fCustT: "Personalizado", fCust: "Nombre, iniciales o un logo sencillo: +5 €.",
+    footer: "Diseño propio, hecho a mano en Alicante.",
+    adults: "Solo para mayores de 18 años.",
+    msgHero: "Hola, quiero una pitillera. ¿Qué modelos y colores tienes?",
+    msgItem: (n, p) => `Hola, quiero la ${n} (${p} €). ¿Qué colores tienes?`
+  },
+  en: {
+    title: "Capas Studio 3D · 3D-printed cigarette cases in Alicante",
+    desc: "Cigarette cases with magnetic closures, designed and printed layer by layer in Alicante. Order yours on WhatsApp.",
+    soundOn: "Sound: on", soundOff: "Sound: off",
+    lead: "Cigarette cases with magnetic closures, designed and printed layer by layer in Alicante.",
+    cta: "Order on WhatsApp", sticker: "Play the click",
+    belt: "MAGNETS · PETG · OWN DESIGN · HANDMADE · ALICANTE · ",
+    models: "Models", want: "I want it", soon: "Photo coming soon", alt: "3D render: ",
+    howTitle: "How to order",
+    step1: "Choose the model.",
+    step2: "Choose the colour from the ones I have in stock.",
+    step3: "Message me on WhatsApp. Hand delivery in Alicante; ask me about shipping.",
+    detailsTitle: "Details",
+    fPetg: "Plastic that stands up to knocks and heat.",
+    fMagT: "Magnets", fMag: "Magnetic closures that open and shut with a click.",
+    fHandT: "Handmade", fHand: "Every piece is printed and assembled by hand in Alicante.",
+    fCustT: "Custom", fCust: "Name, initials or a simple logo: +5 €.",
+    footer: "Own design, handmade in Alicante.",
+    adults: "Adults 18+ only.",
+    msgHero: "Hi, I'd like a cigarette case. What models and colours do you have?",
+    msgItem: (n, p) => `Hi, I'd like the ${n} (${p} €). What colours do you have?`
+  },
+  uk: {
+    title: "Capas Studio 3D · Портсигари, надруковані на 3D-принтері в Аліканте",
+    desc: "Портсигари й футляри на магнітах, спроєктовані й надруковані шар за шаром в Аліканте. Замовляйте у WhatsApp.",
+    soundOn: "Звук: так", soundOff: "Звук: ні",
+    lead: "Портсигари й футляри на магнітах, спроєктовані й надруковані шар за шаром в Аліканте.",
+    cta: "Замовити у WhatsApp", sticker: "Послухати клац",
+    belt: "МАГНІТИ · PETG · ВЛАСНИЙ ДИЗАЙН · РУЧНА РОБОТА · АЛІКАНТЕ · ",
+    models: "Моделі", want: "Хочу", soon: "Фото скоро буде", alt: "3D-рендер: ",
+    howTitle: "Як замовити",
+    step1: "Оберіть модель.",
+    step2: "Оберіть колір з тих, що є в наявності.",
+    step3: "Напишіть мені у WhatsApp. Передаю особисто в Аліканте; про доставку питайте.",
+    detailsTitle: "Деталі",
+    fPetg: "Пластик, який не боїться ударів і спеки.",
+    fMagT: "Магніти", fMag: "Магнітні замки, що відкриваються й закриваються з клацанням.",
+    fHandT: "Ручна робота", fHand: "Кожну річ друкую й збираю вручну в Аліканте.",
+    fCustT: "Персоналізація", fCust: "Ім'я, ініціали або простий логотип: +5 €.",
+    footer: "Власний дизайн, ручна робота в Аліканте.",
+    adults: "Лише для повнолітніх (18+).",
+    msgHero: "Привіт! Хочу портсигар. Які є моделі й кольори?",
+    msgItem: (n, p) => `Привіт! Хочу «${n}» (${p} €). Які є кольори?`
+  },
+  ru: {
+    title: "Capas Studio 3D · Портсигары, напечатанные на 3D-принтере в Аликанте",
+    desc: "Портсигары и футляры на магнитах, спроектированные и напечатанные слой за слоем в Аликанте. Заказывайте в WhatsApp.",
+    soundOn: "Звук: да", soundOff: "Звук: нет",
+    lead: "Портсигары и футляры на магнитах, спроектированные и напечатанные слой за слоем в Аликанте.",
+    cta: "Заказать в WhatsApp", sticker: "Послушать клац",
+    belt: "МАГНИТЫ · PETG · СВОЙ ДИЗАЙН · РУЧНАЯ РАБОТА · АЛИКАНТЕ · ",
+    models: "Модели", want: "Хочу", soon: "Фото скоро будет", alt: "3D-рендер: ",
+    howTitle: "Как заказать",
+    step1: "Выберите модель.",
+    step2: "Выберите цвет из тех, что есть в наличии.",
+    step3: "Напишите мне в WhatsApp. Передаю лично в Аликанте; о доставке спрашивайте.",
+    detailsTitle: "Детали",
+    fPetg: "Пластик, который не боится ударов и жары.",
+    fMagT: "Магниты", fMag: "Магнитные замки, которые открываются и закрываются с щелчком.",
+    fHandT: "Ручная работа", fHand: "Каждую вещь печатаю и собираю вручную в Аликанте.",
+    fCustT: "Персонализация", fCust: "Имя, инициалы или простой логотип: +5 €.",
+    footer: "Свой дизайн, ручная работа в Аликанте.",
+    adults: "Только для совершеннолетних (18+).",
+    msgHero: "Привет! Хочу портсигар. Какие есть модели и цвета?",
+    msgItem: (n, p) => `Привет! Хочу «${n}» (${p} €). Какие есть цвета?`
+  }
+};
+
 const MODELS = [
-  { name: "Plana carbono", img: "img/plana.jpg", price: 18,
-    facts: ["98 × 64 × 25 mm, cabe en el bolsillo", "Textura de fibra de carbono", "Hueco para papel y fila de 15 filtros"] },
-  { name: "Cerilla", img: "img/cerilla.jpg", price: 18,
-    facts: ["Cajón deslizante, como una caja de cerillas", "Funda con textura de panal"] },
-  { name: "Swivel", img: "", price: 20,
-    facts: ["La tapa gira hacia un lado sobre un eje", "Sitio para 24 filtros"] },
-  { name: "Redonda carbono", img: "img/redonda.jpg", price: 22,
-    facts: ["Ø 95 mm", "Textura de fibra de carbono", "Compartimento para filtros y papel"] },
-  { name: "Monolito", img: "img/monolito.jpg", price: 22,
-    facts: ["Tapa que corre por raíles", "Cargador de filtros que sale con un botón", "Ranura para el papel"] },
-  { name: "Artemón", img: "img/artemon.jpg", price: 25,
-    facts: ["Escamas en relieve", "Se abre en dos mitades"] },
-  { name: "Libro", img: "img/libro.jpg", price: 29,
-    facts: ["156 × 88 × 36 mm", "Se abre como un libro", "Varios compartimentos con tapa"] }
+  { img: "img/plana.jpg", price: 18,
+    name: { es: "Plana carbono", en: "Flat carbon", uk: "Плаский карбон", ru: "Плоский карбон" },
+    facts: {
+      es: ["98 × 64 × 25 mm, cabe en el bolsillo", "Textura de fibra de carbono", "Hueco para papel y fila de 15 filtros"],
+      en: ["98 × 64 × 25 mm, fits in a pocket", "Carbon-fibre texture", "Slot for papers and a row of 15 filters"],
+      uk: ["98 × 64 × 25 мм, вміщується в кишеню", "Текстура карбону", "Місце для паперу і ряд на 15 фільтрів"],
+      ru: ["98 × 64 × 25 мм, помещается в карман", "Текстура карбона", "Место для бумаги и ряд на 15 фильтров"] } },
+  { img: "img/cerilla.jpg", price: 18,
+    name: { es: "Cerilla", en: "Cerilla", uk: "Cerilla", ru: "Cerilla" },
+    facts: {
+      es: ["Cajón deslizante, como una caja de cerillas", "Funda con textura de panal"],
+      en: ["Sliding drawer, like a matchbox", "Sleeve with a honeycomb texture"],
+      uk: ["Висувна шухляда, як у сірниковій коробці", "Корпус із текстурою сот"],
+      ru: ["Выдвижной ящик, как у спичечного коробка", "Корпус с текстурой сот"] } },
+  { img: "", price: 20,
+    name: { es: "Swivel", en: "Swivel", uk: "Swivel", ru: "Swivel" },
+    facts: {
+      es: ["La tapa gira hacia un lado sobre un eje", "Sitio para 24 filtros"],
+      en: ["The lid swings to the side on a pivot", "Room for 24 filters"],
+      uk: ["Кришка відкривається вбік на осі", "Місце для 24 фільтрів"],
+      ru: ["Крышка открывается вбок на оси", "Место для 24 фильтров"] } },
+  { img: "img/redonda.jpg", price: 22,
+    name: { es: "Redonda carbono", en: "Round carbon", uk: "Круглий карбон", ru: "Круглый карбон" },
+    facts: {
+      es: ["Ø 95 mm", "Textura de fibra de carbono", "Compartimento para filtros y papel"],
+      en: ["Ø 95 mm", "Carbon-fibre texture", "Compartment for filters and papers"],
+      uk: ["Ø 95 мм", "Текстура карбону", "Відсік для фільтрів і паперу"],
+      ru: ["Ø 95 мм", "Текстура карбона", "Отсек для фильтров и бумаги"] } },
+  { img: "img/monolito.jpg", price: 22,
+    name: { es: "Monolito", en: "Monolith", uk: "Моноліт", ru: "Монолит" },
+    facts: {
+      es: ["Tapa que corre por raíles", "Cargador de filtros que sale con un botón", "Ranura para el papel"],
+      en: ["Lid that slides on rails", "Filter magazine that pops out at the push of a button", "Slot for papers"],
+      uk: ["Кришка ковзає в пазах", "Магазин фільтрів виходить натисканням кнопки", "Щілина для паперу"],
+      ru: ["Крышка скользит в пазах", "Магазин фильтров выходит нажатием кнопки", "Щель для бумаги"] } },
+  { img: "img/artemon.jpg", price: 25,
+    name: { es: "Artemón", en: "Artemón", uk: "Артемон", ru: "Артемон" },
+    facts: {
+      es: ["Escamas en relieve", "Se abre en dos mitades"],
+      en: ["Raised scale pattern", "Opens in two halves"],
+      uk: ["Рельєфна луска", "Відкривається на дві половини"],
+      ru: ["Рельефная чешуя", "Открывается на две половины"] } },
+  { img: "img/libro.jpg", price: 29,
+    name: { es: "Libro", en: "Book", uk: "Книжка", ru: "Книжка" },
+    facts: {
+      es: ["156 × 88 × 36 mm", "Se abre como un libro", "Varios compartimentos con tapa"],
+      en: ["156 × 88 × 36 mm", "Opens like a book", "Several compartments with lids"],
+      uk: ["156 × 88 × 36 мм", "Відкривається як книжка", "Кілька відсіків із кришками"],
+      ru: ["156 × 88 × 36 мм", "Открывается как книга", "Несколько отсеков с крышками"] } }
 ];
 
-const BELT = "IMANES · PETG · DISEÑO PROPIO · HECHO A MANO · ALICANTE · ";
+function detectLang() {
+  const q = new URLSearchParams(location.search).get("lang");
+  if (q && SUPPORTED.includes(q)) return q;
+  for (const l of (navigator.languages || [navigator.language || "es"])) {
+    const code = l.slice(0, 2).toLowerCase();
+    if (SUPPORTED.includes(code)) return code;
+  }
+  return "es";
+}
+
+let lang = detectLang();
 
 function waLink(text) {
   if (!CONFIG.whatsapp) return "#";
   return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(text);
 }
 
-document.getElementById("belt").textContent = BELT.repeat(8);
-
-const grid = document.getElementById("grid");
-for (const m of MODELS) {
-  const card = document.createElement("article");
-  card.className = "card";
-  const pic = m.img
-    ? `<img src="${m.img}" alt="Render 3D de la ${m.name}" loading="lazy">`
-    : `<div class="none">Foto próximamente</div>`;
-  card.innerHTML = `
-    <div class="pic">${pic}</div>
-    <div class="body">
-      <h3>${m.name}</h3>
-      <ul>${m.facts.map(f => `<li>${f}</li>`).join("")}</ul>
-      <div class="row">
-        <span class="price">${m.price} €</span>
-        <a class="want clac wa" href="#" data-msg="Hola, quiero la ${m.name} (${m.price} €). ¿Qué colores tienes?">Lo quiero</a>
-      </div>
-    </div>`;
-  grid.appendChild(card);
+function renderModels() {
+  const t = UI[lang];
+  const grid = document.getElementById("grid");
+  grid.innerHTML = "";
+  for (const m of MODELS) {
+    const name = m.name[lang];
+    const card = document.createElement("article");
+    card.className = "card";
+    const pic = m.img
+      ? `<img src="${m.img}" alt="${t.alt}${name}" loading="lazy">`
+      : `<div class="none">${t.soon}</div>`;
+    card.innerHTML = `
+      <div class="pic">${pic}</div>
+      <div class="body">
+        <h3>${name}</h3>
+        <ul>${m.facts[lang].map(f => `<li>${f}</li>`).join("")}</ul>
+        <div class="row">
+          <span class="price">${m.price} €</span>
+          <a class="want clac wa" href="${waLink(t.msgItem(name, m.price))}">${t.want}</a>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  }
 }
 
-for (const a of document.querySelectorAll("a.wa")) {
-  a.href = waLink(a.dataset.msg);
-  if (CONFIG.whatsapp) { a.target = "_blank"; a.rel = "noopener"; }
+function applyLang() {
+  const t = UI[lang];
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  document.querySelector('meta[name="description"]').content = t.desc;
+  document.querySelectorAll("[data-i]").forEach(el => { el.textContent = t[el.dataset.i]; });
+  document.querySelectorAll("[data-i-aria]").forEach(el => { el.setAttribute("aria-label", t[el.dataset.iAria]); });
+  document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  document.getElementById("belt").textContent = t.belt.repeat(8);
+  const hero = document.querySelector(".cta");
+  hero.href = waLink(t[hero.dataset.msgkey]);
+  renderModels();
+  for (const a of document.querySelectorAll("a.wa")) {
+    if (CONFIG.whatsapp) { a.target = "_blank"; a.rel = "noopener"; }
+  }
+  paintSound();
 }
+
+document.querySelectorAll(".langs button").forEach(b => {
+  b.addEventListener("click", () => {
+    lang = b.dataset.lang;
+    const url = new URL(location.href);
+    url.searchParams.set("lang", lang);
+    history.replaceState(null, "", url);
+    applyLang();
+  });
+});
+
 if (CONFIG.instagram) {
   document.getElementById("ig").innerHTML =
     `Instagram: <a href="https://instagram.com/${CONFIG.instagram}" target="_blank" rel="noopener">@${CONFIG.instagram}</a>`;
@@ -207,10 +382,9 @@ let soundOn = true;
 try { soundOn = localStorage.getItem("capas-sound") !== "off"; } catch (e) {}
 const soundBtn = document.getElementById("sound");
 function paintSound() {
-  soundBtn.textContent = "Sonido: " + (soundOn ? "sí" : "no");
+  soundBtn.textContent = soundOn ? UI[lang].soundOn : UI[lang].soundOff;
   soundBtn.setAttribute("aria-pressed", String(soundOn));
 }
-paintSound();
 
 let ctx = null;
 function clac() {
@@ -253,6 +427,8 @@ soundBtn.addEventListener("click", () => {
   try { localStorage.setItem("capas-sound", soundOn ? "on" : "off"); } catch (e) {}
   paintSound();
 });
+
+applyLang();
 </script>
 </body>
 </html>
